@@ -19,6 +19,8 @@ const Slider = () => {
   useEffect(() => {
     nextCard();
   });
+console.log(data)
+  
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
