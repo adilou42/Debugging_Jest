@@ -16,7 +16,7 @@ const EventList = () => {
 
   const filteredEvents = (
     (type
-      ? data?.events?.filter((event) => event.type === type)
+      ? data?.events?.filter((event) => event.type === type) // filters events by type when you select a type
       : data?.events)
        || []
   ).filter((event, index) => {
@@ -45,7 +45,7 @@ const EventList = () => {
           <h3 className="SelectTitle">Catégories</h3>
           <Select
             selection={Array.from(typeList)}
-            onChange={(value) => (value ? changeType(value) : changeType(null))}
+            onChange={(value) => (value ? changeType(value) : changeType(null))} // goes to the Select component and adds the value to the changeType function
           />
           <div id="events" className="ListContainer">
             {filteredEvents.map((event) => (

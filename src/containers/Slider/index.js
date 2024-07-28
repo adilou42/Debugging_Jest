@@ -6,14 +6,14 @@ import "./style.scss";
 
 const Slider = () => {
   const { data } = useData();
-  const [index, setIndex] = useState(2); // starts with the last event
+  const [index, setIndex] = useState(0); // starts with the first event
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
 );
 
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index > 0 ? index - 1 : 2), // displaying in descending order (last event first)
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0), // displaying in ascending order (first event first)
       5000
     );
   };
@@ -47,7 +47,7 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+                  checked={index === radioIdx} // use index to select the current event
                 />
               ))}
             </div>
