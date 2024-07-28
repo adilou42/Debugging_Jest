@@ -6,20 +6,20 @@ import "./style.scss";
 
 const Slider = () => {
   const { data } = useData();
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(2); // starts with the last event
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
-  );
+);
+
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length -1 ? index + 1 : 0),
+      () => setIndex(index > 0 ? index - 1 : 2), // displaying in descending order (last event first)
       5000
     );
   };
   useEffect(() => {
     nextCard();
   });
-// console.log(data)
   
   return (
     <div className="SlideCardList">
