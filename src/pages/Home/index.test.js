@@ -32,13 +32,13 @@ describe("When a page is created", () => {
   it("a list of events is displayed", () => {
     // to implement
   })
-  it("a list a people is displayed", () => {
+  it("a list of people is displayed", () => {
     // to implement
   })
   it("a footer is displayed", () => {
-    // to implement
+    // to implement check if the balise footer is displayed
   })
   it("an event card, with the last event, is displayed", () => {
-    // to implement
+    // to implement calculate to have the last event of the array
   })
 });

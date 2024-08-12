@@ -4,6 +4,8 @@ import { getMonth } from "../../helpers/Date";
 
 import "./style.scss";
 
+const SLIDE_INTERVAL = 5000;
+
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0); // starts with the first event
@@ -12,14 +14,18 @@ const Slider = () => {
 );
 
   const nextCard = () => {
-    setTimeout(
-      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0), // displaying in ascending order (first event first)
-      5000
-    );
+    setIndex((prevIndex) => (prevIndex < 2 ? prevIndex + 1 : 0));
   };
+
   useEffect(() => {
-    nextCard();
-  });
+    const timer = setTimeout(nextCard, SLIDE_INTERVAL); 
+    return () => clearTimeout(timer); // Cleanup the timeout on unmount
+  }, [index]); 
+
+
+  function changeSlide(radioIdx) {
+    setIndex(radioIdx);
+  }
   
   return (
     <div className="SlideCardList">
@@ -43,12 +49,15 @@ const Slider = () => {
           <div className="SlideCard__paginationContainer">
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
-                <input
-                  key={`${event.id}`}
-                  type="radio"
-                  name="radio-button"
-                  checked={index === radioIdx} // use index to select the current event
-                />
+                <div className="bulletPoint">
+                  <input
+                    onClick={() => changeSlide(radioIdx)}
+                    key={`${event.cover}-${index}`}
+                    type="radio"
+                    name="radio-button"
+                    defaultChecked={index === radioIdx} // use index to select the current event
+                  />
+                </div>
               ))}
             </div>
           </div>

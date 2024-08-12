@@ -13,7 +13,14 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const { data } = useData()
+
+  const dataSorted = data?.events.sort((evtA, evtB) =>
+    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+); // sort data by ascending date (returns a new array)
+
+const lastEvent = dataSorted && dataSorted.length - 1 // get the last event index
+
   return <>
     <header>
       <Menu />
@@ -117,9 +124,9 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
+          imageSrc={dataSorted?.[lastEvent].cover}
+          title={dataSorted?.[lastEvent].title}
+          date={new Date(dataSorted?.[lastEvent].date)}
           small
           label="boom"
         />

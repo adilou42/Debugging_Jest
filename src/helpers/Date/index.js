@@ -14,3 +14,4 @@ export const MONTHS = {
 };
 
 export const getMonth = (date) => MONTHS[date.getMonth() + 1];
+// use this function to get the right month (use + 1 because getMonth() returns a number between 0 and 11)
