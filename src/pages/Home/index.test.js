@@ -37,6 +37,9 @@ describe("When a page is created", () => {
   })
   it("a footer is displayed", () => {
     // to implement check if the balise footer is displayed
+      render(<Home />);
+      const footerElement = screen.getByRole("contentinfo");
+      expect(footerElement).toBeInTheDocument();
   })
   it("an event card, with the last event, is displayed", () => {
     // to implement calculate to have the last event of the array
