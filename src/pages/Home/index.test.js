@@ -29,19 +29,28 @@ describe("When Form is created", () => {
 
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
-  })
-  it("a list of people is displayed", () => {
-    // to implement
-  })
-  it("a footer is displayed", () => {
+  it("a list of events is displayed", async () => {
+    render(<Home />);
+    // Use await with findAllByTestId to wait for the elements to appear
+    const eventCards = await screen.queryByTestId('event-card');
+    expect(eventCards).toBeInTheDocument();
+  });
+
+  it("a list of people is displayed", async () => {
+    render(<Home />);
+    // Query all the PeopleCard components
+    const peopleCards = await screen.queryByTestId('people-card');
+    expect(peopleCards).toBeInTheDocument();
+  });
+
+  it("a footer is displayed", async () => {
     // to implement check if the balise footer is displayed
-      render(<Home />);
-      const footerElement = screen.getByRole("contentinfo");
-      expect(footerElement).toBeInTheDocument();
-  })
+    render(<Home />);
+    const footerElement = screen.getByRole("contentinfo");
+    expect(footerElement).toBeInTheDocument();
+  });
+
   it("an event card, with the last event, is displayed", () => {
     // to implement calculate to have the last event of the array
-  })
+  });
 });
