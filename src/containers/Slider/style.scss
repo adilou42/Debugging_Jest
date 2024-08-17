@@ -1,7 +1,6 @@
 @import "src/colors.scss";
 
 .SlideCardList {
-  // position: relative;
   width: 100%;
   max-width: 1440px;
   height: 586px;
@@ -25,20 +24,6 @@
       justify-content: center;
       width: 100%;
     }
-    // &__paginationContainer {
-    //   position: absolute;
-    //   left: 0;
-    //   bottom: 60px;
-    //   display: flex;
-    //   justify-content: center;
-    //   width: 100%;
-    //   input {
-    //     width: 16px;
-    //     height: 16px;
-    //     min-width: 0;
-    //     color: $primary;
-    //   }
-    // }
     &__description {
       left: 0;
       bottom: 50px;
@@ -86,10 +71,6 @@
     transform: translateX(0%);
   }
 }
-
-// .SlideCard__pagination {
-//   display: flex;
-// }
 
 .SliderSection {
   position: relative;
